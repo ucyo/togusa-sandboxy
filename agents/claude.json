@@ -1,0 +1,35 @@
+{
+  "allowedHosts" : [
+    "*.anthropic.com",
+    "*.claude.com",
+    "npm.org",
+    "*.npmjs.org",
+    "*.github.com",
+    "*.githubusercontent.com",
+    "*.pypi.org",
+    "*.pythonhosted.org"
+  ],
+  "baseImage" : "docker.io\/library\/node:22",
+  "displayName" : "Claude Code",
+  "environmentVariables" : [
+    "ANTHROPIC_API_KEY",
+    "NODE_OPTIONS=--max-old-space-size=4096",
+    "IS_SANDBOX=1"
+  ],
+  "installCommands" : [
+    "apt-get update && apt-get install -y --no-install-recommends less git procps sudo fzf zsh man-db unzip gnupg2 gh ipset iproute2 dnsutils aggregate jq nano vim ripgrep ca-certificates && apt-get clean && rm -rf \/var\/lib\/apt\/lists\/*",
+    "npm install -g @anthropic-ai\/claude-code",
+    "npm install -g global-agent"
+  ],
+  "launchCommand" : [
+    "claude",
+    "--dangerously-skip-permissions"
+  ],
+  "mounts" : [
+    {
+      "containerPath" : "\/root\/.claude",
+      "hostPath" : "~\/.claude",
+      "readOnly" : false
+    }
+  ]
+}

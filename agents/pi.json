@@ -1,0 +1,37 @@
+{
+  "allowedHosts" : [
+    "*.anthropic.com",
+    "api.openai.com",
+    "generativelanguage.googleapis.com",
+    "openrouter.ai",
+    "*.openrouter.ai",
+    "api.x.ai",
+    "npm.org",
+    "*.npmjs.org"
+  ],
+  "baseImage" : "docker.io\/library\/node:22",
+  "displayName" : "Pi",
+  "environmentVariables" : [
+    "ANTHROPIC_API_KEY",
+    "ANTHROPIC_OAUTH_TOKEN",
+    "OPENAI_API_KEY",
+    "GEMINI_API_KEY",
+    "GOOGLE_API_KEY",
+    "OPENROUTER_API_KEY",
+    "XAI_API_KEY"
+  ],
+  "installCommands" : [
+    "apt-get update && apt-get install -y --no-install-recommends git ca-certificates && apt-get clean && rm -rf \/var\/lib\/apt\/lists\/*",
+    "npm install -g --ignore-scripts @earendil-works\/pi-coding-agent"
+  ],
+  "launchCommand" : [
+    "pi"
+  ],
+  "mounts" : [
+    {
+      "containerPath" : "\/root\/.pi\/agent",
+      "hostPath" : "~\/.pi\/agent",
+      "readOnly" : false
+    }
+  ]
+}

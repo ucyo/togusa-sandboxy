@@ -1,0 +1,5 @@
+{
+  "defaultCPUs" : 4,
+  "defaultMemory" : "4g",
+  "initfsReference" : "ghcr.io\/apple\/containerization\/vminit:0.30.0"
+}
